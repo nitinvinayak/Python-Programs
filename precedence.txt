@@ -1,0 +1,25 @@
+Table 5-2. Python expression operators and precedence
+Operators Description
+yield x Generator function send protocol (new in Release 2.5)
+lambda args: expression Anonymous function generation
+x if y else z Ternary selection expression (new in Release 2.5)
+x or y Logical OR (y is evaluated only if x is false)
+x and y Logical AND (y is evaluated only if x is true)
+not x Logical negation
+x < y,x <= y,x > y,x >= y,x == y,x <> y,x !=
+y, x is y, x is not y, x in y, x not in y
+Comparison operators, value equality operators,a object
+identity tests, sequence membership
+a In Python 2.5, value inequality can be written as either X!= Y or X<> Y. In Python 3.0, the latter of these options will be removed
+because it is redundant; use X != Y for value inequality tests.
+x | y Bitwise OR
+x ^ y Bitwise eXclusive OR
+x & y Bitwise AND
+x << y, x >> y Shift x left or right by y bits
+-x + y, x – y Addition/concatenation, subtraction
+x * y, x % y, x / y, x // y Multiplication/repetition, remainder/format, divisionb
+b Floor division (X// Y), new in Release 2.2, always truncates fractional remainders. This is further described in “Division: Classic, Floor,
+and True.”
+-x, +x, ~x, x ** y Unary negation, identity, bitwise complement, binary power
+x[i], x[i:j], x.attr, x(...) Indexing, slicing, qualification, function calls
+(...), [...], {...}, `...` Tuple, list,c dictionary, conversion to stringd
