@@ -15,10 +15,12 @@ for key,value in d.items():
 name={'d':'SpecialOne'};
 name['c']='SimpleOne';
 print(name);
-del name;
+
 d.update({'id':2312312});#Updates value of id
 print(d.items());
+print('points' in d);
 del d;
+del name;
 #new Dictionary
 username={'Axel':'Axel10','Mark':'Evans1','Jude':'Jude14'};
 while True:
@@ -32,4 +34,3 @@ while True:
         username[name]=use;
         print("updated");
 #No exit in above loop
-print(username);        
