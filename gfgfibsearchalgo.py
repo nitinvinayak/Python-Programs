@@ -35,9 +35,9 @@ def fib(x,arr):
     return -1
 arr=[1,2,2,3,453,4353,43200]
 x=4353
-start=time.time()
+start=time.process_time_ns()
 loc=fib(x,arr)
-end=time.time()
+end=time.process_time_ns()
 print(loc)
 print(end-start)
 
