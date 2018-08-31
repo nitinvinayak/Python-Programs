@@ -7,7 +7,7 @@ def fib(arr,x):
         f1=f2
         f2=f3
         f3=f1+f2
-        t=bins(arr,f1,f2,x);
+        t=bins(arr,f1,f3,x);
         if(t!=-1):
             return t;
     return -1
@@ -21,8 +21,10 @@ def bins(arr,l,h,x):
         else:
             return m
     return -1
-arr=[1,2,2,3,453,4353,43200]
-x=4353
+arr=[]
+for i in range(1,1000,2):
+    arr.append(i)
+x=799
 start=time.time()
 loc=fib(arr,x)
 end=time.time()

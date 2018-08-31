@@ -1,43 +1,67 @@
-import time
-def fib(x,arr):
-    '''
-    if x==0:
-        return 0
-    elif x==1:
-        return 1
-    else:
-        return fib(x-1)+fib(x-2)
-    '''
-    f1=0
-    f2=1
-    f3=f2+f1
-    # f1,f2,f3 are the 3 fibonacci terms
-    while(f3>len(arr)):
-        f1=f2
-        f2=f3
-        f3=f1+f2
-    offset=-1
-    while(f3>1):
-        i=min(offset+f1,len(arr)-1)
-        if(arr[i]<x):
-            f3=f2
-            f2=f1
-            f1=f3-f2
-            offset=i
-        elif(arr[i]>x):
-            f3=f1
-            f2=f2-f1
-            f3=f1-f2
-        else:
+# Python3 program for Fibonacci search.
+from bisect import bisect_left
+import time 
+# Returns index of x if present,  else 
+# returns -1 
+def fibMonaccianSearch(arr, x, n):
+     
+    # Initialize fibonacci numbers 
+    fibMMm2 = 0 # (m-2)'th Fibonacci No.
+    fibMMm1 = 1 # (m-1)'th Fibonacci No.
+    fibM = fibMMm2 + fibMMm1 # m'th Fibonacci
+ 
+    # fibM is going to store the smallest 
+    # Fibonacci Number greater than or equal to n 
+    while (fibM < n):
+        fibMMm2 = fibMMm1
+        fibMMm1 = fibM
+        fibM = fibMMm2 + fibMMm1
+ 
+    # Marks the eliminated range from front
+    offset = -1;
+ 
+    # while there are elements to be inspected.
+    # Note that we compare arr[fibMm2] with x.
+    # When fibM becomes 1, fibMm2 becomes 0 
+    while (fibM > 1):
+         
+        # Check if fibMm2 is a valid location
+        i = min(offset+fibMMm2, n-1)
+ 
+        # If x is greater than the value at 
+        # index fibMm2, cut the subarray array 
+        # from offset to i 
+        if (arr[i] < x):
+            fibM = fibMMm1
+            fibMMm1 = fibMMm2
+            fibMMm2 = fibM - fibMMm1
+            offset = i
+ 
+        # If x is greater than the value at 
+        # index fibMm2, cut the subarray 
+        # after i+1
+        elif (arr[i] > x):
+            fibM = fibMMm2
+            fibMMm1 = fibMMm1 - fibMMm2
+            fibMMm2 = fibM - fibMMm1
+ 
+        # element found. return index 
+        else :
             return i
-    if(f2 and arr[offset+1]):
+ 
+    # comparing the last element with x */
+    if(fibMMm1 and arr[offset+1] == x):
         return offset+1;
+ 
+    # element not found. return -1 
     return -1
-arr=[1,2,2,3,453,4353,43200]
-x=4353
-start=time.process_time_ns()
-loc=fib(x,arr)
-end=time.process_time_ns()
+arr=[]
+for i in range(1,1000,2):
+    arr.append(i)
+x=799
+start=time.time()
+loc=fibMonaccianSearch(arr,x,len(arr))
+end=time.time()
 print(loc)
 print(end-start)
 
